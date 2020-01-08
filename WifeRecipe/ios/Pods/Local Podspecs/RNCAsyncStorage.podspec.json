@@ -1,0 +1,21 @@
+{
+  "name": "RNCAsyncStorage",
+  "version": "2.0.0",
+  "summary": "Legacy module for React Native Async Storage",
+  "license": "MIT",
+  "authors": "React Native Community",
+  "homepage": "https://github.com/react-native-community",
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source": {
+    "git": "https://github.com/react-native-community/react-native-async-storage.git",
+    "tag": "v2.0.0"
+  },
+  "source_files": "ios/**/*.{h,m}",
+  "dependencies": {
+    "React": [
+
+    ]
+  }
+}
