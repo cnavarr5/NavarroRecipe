@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, TextInput, Alert, SafeAreaView } from 'react-native';
 import storage from './storage';
-
 import 'react-native-gesture-handler';
 
 export default function App() {
@@ -10,7 +9,7 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.headerText}>Navarro Recipe Book</Text>
+          <Text style={styles.headerText}>Natalies's Book</Text>
         </View>
     </SafeAreaView>
   );
@@ -19,7 +18,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#E3C567',
   },
   header: {
     backgroundColor: '#C8963E',
