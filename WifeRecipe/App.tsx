@@ -1,34 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, TextInput, Alert } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, Alert, SafeAreaView } from 'react-native';
 import storage from './storage';
+
+import 'react-native-gesture-handler';
 
 export default function App() {
   const [value, onChangeText] = React.useState('Text Value of Input');
 
   return (
-    <View style={styles.container}>
-      <Text>Enter Text</Text>
-      <TextInput 
-        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-        onChangeText={text => onChangeText(text)}
-        value={value}
-      />
-      <Button 
-      title="Save Input"
-      onPress={() => {
-        console.log('Storing value');
-        storage.set("user", value)
-      } }
-      />
-
-    <Button 
-      title="Retreive Value"
-      onPress={() => {
-        const storedVal = storage.get('user')
-          .then((res) => Alert.alert(JSON.stringify(res)))
-      }}
-      />
-    </View>
+    <SafeAreaView style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.headerText}>Navarro Recipe Book</Text>
+        </View>
+    </SafeAreaView>
   );
 }
 
@@ -36,7 +20,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
+  header: {
+    backgroundColor: '#C8963E',
+    padding: 10,
+    alignItems: 'center'
+  },
+  headerText: {
+    fontSize: 24,
+  }
 });
