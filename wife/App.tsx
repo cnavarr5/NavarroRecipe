@@ -5,18 +5,20 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import storage from './storage';
 import sqlite from './sqlite';
+import Database from './Database';
 
 class HomeScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
       headaerTitle: () => 'This should work',
       headerLeft: () => (
-        <Button 
-          onPress={navigation.getParam('increaseCount')}
-          title="+1"
-          color="#000"
-        />
-      ),
+        <Button
+        title="Add to Database"
+        onPress={() => { 
+          navigation.navigate('AddRecipe'); 
+        }}
+      />
+      )
     };
   };
 
@@ -51,6 +53,25 @@ class HomeScreen extends React.Component {
   }
 }
 
+const db = new Database();
+
+class RecipeScreen extends React.Component {
+  constructor() {
+    super({});
+    this.state = {
+      isLoading: true,
+      products: [],
+      notFound: 'Recipes not found.\nPlease click (+) button to add it.'
+    };
+  }
+
+  componentDidMount() {
+    this.props.navigation.addListener('didFocus', () => {
+      this.getRecipe();
+    });
+  }
+}
+
 class DetailsScreen extends React.Component {
   render() {
     const { navigation } = this.props;
@@ -71,7 +92,8 @@ class DetailsScreen extends React.Component {
 const AppNavigator = createStackNavigator(
   {
     Home: HomeScreen,
-    Details: DetailsScreen
+    Details: DetailsScreen,
+    AddRecipe: RecipeScreen
   },
   {
     initialRouteName: 'Home',
