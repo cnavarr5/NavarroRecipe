@@ -22,7 +22,8 @@ export default function HomeScreen() {
     columns: 'id, name'
   }
 
-  RecipeDB.database()
+  RecipeDB.database();
+  RecipeDB.createTable()
     .then( bool => {
       if(bool === true){
         recipes = RecipeDB.query(opts)
@@ -34,7 +35,7 @@ export default function HomeScreen() {
 
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-      <Text>Wrong</Text>
+      <Text>Oh Things</Text>
     </KeyboardAvoidingView>
   );
 }
